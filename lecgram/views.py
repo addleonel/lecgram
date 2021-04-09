@@ -1,6 +1,6 @@
 
 import datetime
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, FileResponse
 
 def first_view(request):
     """
@@ -9,7 +9,7 @@ def first_view(request):
     # print(dir(request))
     return HttpResponse('<h1>HELLO EVERYONE HERE IS {time}</h1>'.format(
         time=datetime.datetime.now().strftime('%Y %b %dth, %H:%M')
-    ))
+    ), content_type='text/plain')
 
 def get_request_attributes(request):
     """
@@ -45,6 +45,16 @@ def get_request_attributes(request):
     response = HttpResponse()
     for key, value in request_attributes.items():
         response.write(f'<p>key={key}, value={value}, type={type(value)}</p>')
+    
+    response.set_cookie('NAME', 'Nicola Tesla')
+    response.set_cookie('MESSAGE', 'I\'m trying to code right now')
+    return response
+
+
+def get_excel_file(request):
+    response = HttpResponse('This is my messgae', content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="my_message.xls"'
+
     return response
 
 
@@ -63,5 +73,11 @@ def get_json_format(request):
         'country': 'Peru',
         'avatar': 'https://avatar.example.com/photo=3434hbcdhbdss',
         'bio': 'I think My best is coming'
-    } 
-    return JsonResponse(my_data)
+    }
+
+    prime_numbers = [2, 3, 5, 7, 11]
+    return JsonResponse(prime_numbers, safe=False)
+
+def get_files(request):
+    response = FileResponse(open('lecgram/settings.py', 'rb'))
+    return response

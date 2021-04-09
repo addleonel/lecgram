@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from lecgram.views import first_view, get_request_attributes, get_json_format
+from lecgram.views import (first_view, get_request_attributes, get_json_format,
+get_excel_file, get_files
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', first_view),
     path('request-attributes/', get_request_attributes),
+    path('excel-file/', get_excel_file),
     path('returnjson/', get_json_format),
+    path('my_files/', get_files),
 ]
