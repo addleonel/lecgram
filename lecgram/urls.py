@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from lecgram.views import (first_view, get_request_attributes, get_json_format,
-get_excel_file, get_files
+get_excel_file, get_files, restrict_by_age
 )
 
 urlpatterns = [
@@ -26,4 +26,5 @@ urlpatterns = [
     path('excel-file/', get_excel_file),
     path('returnjson/', get_json_format),
     path('my_files/', get_files),
+    path('restricted/<str:name>/<int:age>', restrict_by_age)
 ]

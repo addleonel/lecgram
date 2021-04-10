@@ -7,6 +7,7 @@ def first_view(request):
     This is my first view in Django
     """
     # print(dir(request))
+    # import pdb; pdb.set_trace() debugger
     return HttpResponse('<h1>HELLO EVERYONE HERE IS {time}</h1>'.format(
         time=datetime.datetime.now().strftime('%Y %b %dth, %H:%M')
     ), content_type='text/plain')
@@ -52,6 +53,9 @@ def get_request_attributes(request):
 
 
 def get_excel_file(request):
+    """
+    Return an excel file and it will be downloaded
+    """
     response = HttpResponse('This is my messgae', content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="my_message.xls"'
 
@@ -76,8 +80,22 @@ def get_json_format(request):
     }
 
     prime_numbers = [2, 3, 5, 7, 11]
-    return JsonResponse(prime_numbers, safe=False)
+    return JsonResponse(
+        my_data, 
+        json_dumps_params={'indent': 2}
+    )
 
 def get_files(request):
+    """
+    Return a file
+    """
     response = FileResponse(open('lecgram/settings.py', 'rb'))
     return response
+
+def restrict_by_age(request, name, age):
+    if age > 18:
+        message = 'Welcome!, enjoy with our features'
+    else:
+        message = 'Your are not allowed here.'
+    
+    return HttpResponse(message)
