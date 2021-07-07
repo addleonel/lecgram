@@ -51,6 +51,6 @@ django-admin startproject <name> <directory>
 Example:
 
 ```
-django-admin startproject .
+django-admin startproject my_project .
 ```
 note: (.) Dot means current directory
