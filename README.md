@@ -9,20 +9,48 @@
 ## Installation on Windows
 
 - Install python
-...Visit [https://www.python.org/downloads/](https://www.python.org/downloads/)
-- Activate a virtual enviroment
-...`virtualenv <name>`
-...`.\<name>\Script\activate`
-...Example:
-...`virtualenv my_enviroment`
-...`.\my_enviroment\Script\activate`
+
+  Visit [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+- Activate a virtual enviroment.
+
+  ```
+  virtualenv <name>
+  ```
+  ```
+  .\<name>\Script\activate
+  ```
+
+  Example:
+
+  ```
+  virtualenv my_enviroment
+  ```
+  ```
+  .\my_enviroment\Script\activate
+  ```
+
 - Install Django
-...`pip install django==<version>`
-...Example:
-...`pip install django==3.0`
+
+  ```
+  pip install django==<version>
+  ```
+
+  Example:
+
+  ```
+  pip install django==3.0
+  ```
 
 ## Create project
 
-`django-admin startproject <name> <directory>`
+```
+django-admin startproject <name> <directory>
+```
+
 Example:
-`django-admin startproject .`
+
+```
+django-admin startproject .
+```
+note: (.) Dot means current directory
