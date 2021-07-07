@@ -20,3 +20,9 @@
 ...`pip install django==<version>`
 ...Example:
 ...`pip install django==3.0`
+
+## Create project
+
+`django-admin startproject <name> <directory>`
+Example:
+`django-admin startproject .`
